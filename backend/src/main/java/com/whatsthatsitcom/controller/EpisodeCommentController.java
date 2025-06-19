@@ -2,6 +2,7 @@ package com.whatsthatsitcom.controller;
 
 import com.whatsthatsitcom.model.EpisodeComment;
 import com.whatsthatsitcom.service.EpisodeCommentService;
+import com.whatsthatsitcom.exception.UnauthorizedException;
 
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -48,9 +49,8 @@ public class EpisodeCommentController {
             } else {
                 return ResponseEntity.notFound().build(); // 404
             }
-        } catch (RuntimeException e) {
-            return ResponseEntity.status(403).body("Unauthorized to delete this comment.");
+        } catch (UnauthorizedException e) {
+            return ResponseEntity.status(403).body(e.getMessage());
         }
     }
-
 }

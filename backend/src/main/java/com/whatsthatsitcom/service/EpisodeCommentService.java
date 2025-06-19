@@ -4,6 +4,7 @@ import com.whatsthatsitcom.model.EpisodeComment;
 import com.whatsthatsitcom.model.User;
 import com.whatsthatsitcom.repository.EpisodeCommentRepository;
 import com.whatsthatsitcom.repository.UserRepository;
+import com.whatsthatsitcom.exception.UnauthorizedException;
 
 import org.springframework.stereotype.Service;
 
@@ -48,7 +49,7 @@ public class EpisodeCommentService {
 
     EpisodeComment comment = commentOpt.get();
     if (!comment.getUser().getId().equals(userId)) {
-        throw new RuntimeException("Unauthorized to delete this comment.");
+        throw new UnauthorizedException("You cannot delete this comment.");
     }
 
     commentRepository.delete(comment);

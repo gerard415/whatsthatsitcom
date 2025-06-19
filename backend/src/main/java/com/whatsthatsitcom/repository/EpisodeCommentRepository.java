@@ -6,4 +6,5 @@ import java.util.List;
 
 public interface EpisodeCommentRepository extends JpaRepository<EpisodeComment, Long> {
     List<EpisodeComment> findByEpisodeId(Long episodeId);
+    List<EpisodeComment> findByUserId(Long userId);
 }
