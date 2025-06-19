@@ -1,6 +1,8 @@
 package com.whatsthatsitcom.model;
 
 import jakarta.persistence.*;
+
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -16,7 +18,7 @@ public class User {
     private String password;
 
     @ElementCollection
-    private List<Long> watchlistSitcomIds;
+    private List<Long> watchlistSitcomIds = new ArrayList<>();
 
     // Getters and Setters
 
