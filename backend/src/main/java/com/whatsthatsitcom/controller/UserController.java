@@ -24,8 +24,8 @@ public class UserController {
         return ResponseEntity.ok(userService.registerUser(user));
     }
 
-    // GET /api/users/{id}
-    @GetMapping("/{id}")
+    // GET /api/users/profile/{id}
+    @GetMapping("/profile/{id}")
     public ResponseEntity<?> getUser(@PathVariable Long id) {
         Optional<User> user = userService.getUserById(id);
         return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
